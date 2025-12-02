@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup Form</title>
+
+<style>
+    body {
+        background: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .box {
+        width: 360px;
+        background: #0f1917;
+        padding: 25px;
+        border-radius: 12px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 14px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 6px;
+        background: #1c2b27;
+        color: #dcdcdc;
+        font-size: 15px;
+    }
+
+    input::placeholder {
+        color: #9da5a3;
+    }
+
+    select {
+        color: #9da5a3;
+    }
+
+    .btn {
+        width: 100%;
+        background: #18c964;
+        color: black;
+        padding: 14px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        margin-top: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="box">
+    <input type="text" placeholder="Full Name">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+
+    <select>
+        <option>Role</option>
+        <option>Patient</option>
+        <option>Doctor</option>
+        <option>Pharmacist</option>
+    </select>
+
+    <button class="btn">Sign Up</button>
+</div>
+
+</body>
+</html>
