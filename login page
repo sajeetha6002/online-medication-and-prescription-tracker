@@ -1,82 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signup Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #c8e7ff, #d9f5ff, #e8ffff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
 
-<style>
-    body {
-        background: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
+        .login-box {
+            background: white;
+            padding: 25px;
+            width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
 
-    .box {
-        width: 360px;
-        background: #0f1917;
-        padding: 25px;
-        border-radius: 12px;
-    }
+        h2 { text-align: center; margin-bottom: 20px; color: #333; }
+        label { font-weight: bold; margin-top: 10px; display: block; }
 
-    input, select {
-        width: 100%;
-        padding: 14px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 6px;
-        background: #1c2b27;
-        color: #dcdcdc;
-        font-size: 15px;
-    }
+        input, select, button {
+            width: 100%; padding: 10px; margin-top: 6px;
+            border-radius: 6px; border: 1px solid #aaa; font-size: 14px;
+        }
 
-    input::placeholder {
-        color: #9da5a3;
-    }
+        button {
+            background-color: #5ea7ff;
+            color: white; font-weight: bold; font-size: 16px;
+            border: none; margin-top: 15px; cursor: pointer;
+        }
+        button:hover { background-color: #4d92e6; }
 
-    select {
-        color: #9da5a3;
-    }
-
-    .btn {
-        width: 100%;
-        background: #18c964;
-        color: black;
-        padding: 14px;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        margin-top: 8px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    .btn:hover {
-        opacity: 0.9;
-    }
-</style>
-
+        .role-section {
+            display: none; margin-top: 15px; padding: 10px;
+            background: #f5f5f5; border-radius: 6px;
+        }
+    </style>
 </head>
+
 <body>
+<div class="login-box">
+    <h2>Login</h2>
 
-<div class="box">
-    <input type="text" placeholder="Full Name">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
+    <form id="loginForm">
 
-    <select>
-        <option>Role</option>
-        <option>Patient</option>
-        <option>Doctor</option>
-        <option>Pharmacist</option>
-    </select>
+        <label>Full Name</label>
+        <input type="text" id="fullname" required>
 
-    <button class="btn">Sign Up</button>
+        <label>Email ID</label>
+        <input type="email" id="email" required>
+
+        <label>Password</label>
+        <input type="password" id="password" required>
+
+        <label>Role</label>
+        <select id="role" required onchange="showRoleSection()">
+            <option value="">-- Select Role --</option>
+            <option value="doctor">Doctor</option>
+            <option value="patient">Patient</option>
+            <option value="pharmacist">Pharmacist</option>
+        </select>
+
+        <div id="doctorSection" class="role-section">
+            <h4>Prescription Details</h4>
+            <input type="text" placeholder="Enter prescription details">
+        </div>
+
+        <div id="patientSection" class="role-section">
+            <h4>Schedule</h4>
+            <input type="text" placeholder="Enter schedule">
+        </div>
+
+        <div id="pharmacistSection" class="role-section">
+            <h4>Stack of Medicine</h4>
+            <input type="text" placeholder="Enter medicine stack">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
 </div>
+
+<script>
+    function showRoleSection() {
+        let role = document.getElementById("role").value;
+
+        document.getElementById("doctorSection").style.display = "none";
+        document.getElementById("patientSection").style.display = "none";
+        document.getElementById("pharmacistSection").style.display = "none";
+
+        if (role === "doctor") document.getElementById("doctorSection").style.display = "block";
+        if (role === "patient") document.getElementById("patientSection").style.display = "block";
+        if (role === "pharmacist") document.getElementById("pharmacistSection").style.display = "block";
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Login Submitted Successfully!");
+    });
+</script>
 
 </body>
 </html>
+
